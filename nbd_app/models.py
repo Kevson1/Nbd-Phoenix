@@ -38,3 +38,14 @@ class Business(models.Model):
   def __str__(self):
     return self.business_name
   
+class GeneralPosts(models.Model):
+  topic = models.CharField(max_length=20)
+  title = models.CharField(max_length=50)
+  message = models.TextField()
+  date_posted = models.DateTimeField(auto_now=True)
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  
+  def __str__(self):
+    return self.title
+  
+  
