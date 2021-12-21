@@ -19,29 +19,29 @@ from pathlib import Path
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-# Development
-if config('MODE')=="dev":
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
-           'HOST': config('DB_HOST'),
-           'PORT': '',
-       }
+# MODE=config("MODE", default="dev")
+# SECRET_KEY = config('SECRET_KEY')
+# DEBUG = config('DEBUG', default=False, cast=bool)
+# # Development
+# if config('MODE')=="dev":
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#            'NAME': config('DB_NAME'),
+#            'USER': config('DB_USER'),
+#            'PASSWORD': config('DB_PASSWORD'),
+#            'HOST': config('DB_HOST'),
+#            'PORT': '',
+#        }
        
-   }
-# production
-else:
-   DATABASES = {
-       'default': dj_database_url.config(
-           default=config('DATABASE_URL')
-       )
-   }
+#    }
+# # production
+# else:
+#    DATABASES = {
+#        'default': dj_database_url.config(
+#            default=config('DATABASE_URL')
+#        )
+#    }
 
 
 # Quick-start development settings - unsuitable for production
@@ -103,12 +103,14 @@ WSGI_APPLICATION = 'phoenixnbd.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+    }
+}
 
 
 # Password validation
