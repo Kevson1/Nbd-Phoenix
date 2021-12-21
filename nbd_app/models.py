@@ -27,3 +27,14 @@ class SocialAmenities(models.Model):
   
   def __str__(self):
     return self.department_name
+  
+class Business(models.Model):
+  business_name = models.CharField(max_length=30)
+  business_description = models.TextField()
+  business_contact_No = models.IntegerField()
+  business_contact_email = models.EmailField()
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  
+  def __str__(self):
+    return self.business_name
+  
