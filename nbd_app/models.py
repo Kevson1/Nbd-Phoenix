@@ -19,3 +19,11 @@ class Profile(models.Model):
   def __str__(self):
     return self.first_name
   
+class SocialAmenities(models.Model):
+  department_name = models.CharField(max_length=30)
+  hotline_number = models.IntegerField()
+  email_address = models.EmailField()
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  
+  def __str__(self):
+    return self.department_name
