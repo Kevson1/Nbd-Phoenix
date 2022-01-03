@@ -59,8 +59,25 @@ class ProfileTestCase(TestCase):
     self.assertTrue(len(existing_profiles)==0)
     
 
-# class SocialAmenitiesTestCase(TestCase):
-#   pass
+class SocialAmenitiesTestCase(TestCase):
+  # Set up method
+  def setUp(self):
+    # Create a Neighbourhood instance
+    self.nbd = Neighbourhood(neighbourhood_name='Makongeni', general_location='Kaloleni')
+    self.nbd.save_nbd()
+    
+    # Create a social Amenities instance
+    self.socialAmenity = SocialAmenities(department_name = 'health', hotline_number = '+254789654112', email_address = 'health@kenya.gmail.com', neighbourhood = self.nbd)
+    self.socialAmenity.save_amenity()
+    
+  # Teardown method
+  def tearDown(self):
+    Neighbourhood.objects.all().delete()
+    SocialAmenities.objects.all().delete()
+    
+  # Test instance
+  def test_instance(self):
+    self.assertTrue(isinstance(self.socialAmenity, SocialAmenities))
 
 # class BusinessTestCase(TestCase):
 #   pass

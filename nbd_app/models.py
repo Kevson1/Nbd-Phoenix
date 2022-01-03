@@ -33,9 +33,12 @@ class Profile(models.Model):
   
 class SocialAmenities(models.Model):
   department_name = models.CharField(max_length=30)
-  hotline_number = models.IntegerField()
+  hotline_number = models.BigIntegerField()
   email_address = models.EmailField()
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  
+  def save_amenity(self):
+    self.save()
   
   def __str__(self):
     return self.department_name
