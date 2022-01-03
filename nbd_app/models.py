@@ -45,7 +45,7 @@ class SocialAmenities(models.Model):
     
   @classmethod
   def filter_by_neighbourhood(cls, neighbourhood_search):
-    found_amenities = cls.objects.filter(neighbourhood = neighbourhood_search)
+    found_amenities = cls.objects.filter(neighbourhood__neighbourhood_name = neighbourhood_search)
     return found_amenities
   
   

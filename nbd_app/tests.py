@@ -94,7 +94,15 @@ class SocialAmenitiesTestCase(TestCase):
     
   # Filter by neighbourhood
   def test_filter_by_neighbourhood(self):
-    amenities_found_for_nbd = SocialAmenities.filter_by_neighbourhood(self.socialAmenity.neighbourhood)
+    # Create a Neighbourhood instance
+    self.nbd = Neighbourhood(neighbourhood_name='Huruma', general_location='Kaloleni')
+    self.nbd.save_nbd()
+    
+    # Create a social Amenities instance
+    self.socialAmenity = SocialAmenities(department_name = 'health', hotline_number = '+254789654112', email_address = 'health@kenya.gmail.com', neighbourhood = self.nbd)
+    self.socialAmenity.save_amenity()
+    
+    amenities_found_for_nbd = SocialAmenities.filter_by_neighbourhood('Huruma')
     self.assertTrue(len(amenities_found_for_nbd)==1)
     
     
