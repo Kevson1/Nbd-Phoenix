@@ -79,6 +79,12 @@ class SocialAmenitiesTestCase(TestCase):
   def test_instance(self):
     self.assertTrue(isinstance(self.socialAmenity, SocialAmenities))
 
+  # Test save amenity
+  def test_save_amenity(self):
+    self.socialAmenity.save_amenity()
+    available_amenities = SocialAmenities.objects.all()
+    self.assertTrue(len(available_amenities)==1)
+    
 # class BusinessTestCase(TestCase):
 #   pass
 

@@ -39,6 +39,9 @@ class SocialAmenities(models.Model):
   
   def save_amenity(self):
     self.save()
+    
+  def delete_amenity(self):
+    self.delete()
   
   def __str__(self):
     return self.department_name
