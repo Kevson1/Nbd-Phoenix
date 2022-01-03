@@ -42,6 +42,12 @@ class SocialAmenities(models.Model):
     
   def delete_amenity(self):
     self.delete()
+    
+  @classmethod
+  def filter_by_neighbourhood(cls, neighbourhood_search):
+    found_amenities = cls.objects.filter(neighbourhood = neighbourhood_search)
+    return found_amenities
+  
   
   def __str__(self):
     return self.department_name

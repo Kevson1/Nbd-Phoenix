@@ -92,6 +92,11 @@ class SocialAmenitiesTestCase(TestCase):
     available_amenities = SocialAmenities.objects.all()
     self.assertTrue(len(available_amenities)==0)
     
+  # Filter by neighbourhood
+  def test_filter_by_neighbourhood(self):
+    amenities_found_for_nbd = SocialAmenities.filter_by_neighbourhood(self.socialAmenity.neighbourhood)
+    self.assertTrue(len(amenities_found_for_nbd)==1)
+    
     
 # class BusinessTestCase(TestCase):
 #   pass
