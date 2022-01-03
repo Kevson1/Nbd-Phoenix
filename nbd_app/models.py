@@ -6,6 +6,10 @@ class Neighbourhood(models.Model):
   neighbourhood_name = models.CharField(max_length=25)
   general_location = models.CharField(max_length=25)
   
+  def save_nbd(self):
+    self.save()
+    
+  
   def __str__(self):
     return self.neighbourhood_name
   
