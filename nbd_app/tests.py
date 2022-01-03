@@ -26,13 +26,30 @@ class NeighbourhoodTestCase(TestCase):
     
 
 class ProfileTestCase(TestCase):
-  pass
+  # Set up method
+  def setUp(self):
+    # Create a neighbourhood instance
+    self.nbd = Neighbourhood(neighbourhood_name='Makongeni', general_location='Kaloleni')
+    self.nbd.save_nbd()
+    
+    # Create a profile instance
+    self.profile = Profile(first_name = 'kelvin', last_name = 'kimani', id_number = '123456', profile_pic = 'my_picture', neighbourhood = self.nbd)
+    self.profile.save_profile()
+    
+  # Teardown method
+  def tearDown(self):
+    Neighbourhood.objects.all().delete()
+    Profile.objects.all().delete()
+    
+  # Test instance
+  def test_instance(self):
+    self.assertTrue(isinstance(self.profile, Profile))
 
-class SocialAmenitiesTestCase(TestCase):
-  pass
+# class SocialAmenitiesTestCase(TestCase):
+#   pass
 
-class BusinessTestCase(TestCase):
-  pass
+# class BusinessTestCase(TestCase):
+#   pass
 
-class GeneralPostsTestCase(TestCase):
-  pass
+# class GeneralPostsTestCase(TestCase):
+#   pass
