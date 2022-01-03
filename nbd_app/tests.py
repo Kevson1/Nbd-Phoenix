@@ -84,6 +84,14 @@ class SocialAmenitiesTestCase(TestCase):
     self.socialAmenity.save_amenity()
     available_amenities = SocialAmenities.objects.all()
     self.assertTrue(len(available_amenities)==1)
+  
+  # Test delete amenity  
+  def test_delete_amenity(self):
+    self.socialAmenity.save_amenity()
+    self.socialAmenity.delete_amenity()
+    available_amenities = SocialAmenities.objects.all()
+    self.assertTrue(len(available_amenities)==0)
+    
     
 # class BusinessTestCase(TestCase):
 #   pass
