@@ -22,6 +22,9 @@ class Profile(models.Model):
   profile_pic = models.ImageField(upload_to='static/images/', null=True)
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
   
+  def save_profile(self):
+    self.save()
+  
   def __str__(self):
     return self.first_name
   
