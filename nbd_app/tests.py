@@ -44,6 +44,13 @@ class ProfileTestCase(TestCase):
   # Test instance
   def test_instance(self):
     self.assertTrue(isinstance(self.profile, Profile))
+    
+  # Test save profile method
+  def test_save_profile(self):
+    self.profile.save_profile()
+    saved_profiles = Profile.objects.all()
+    self.assertTrue(len(saved_profiles)==1)
+    
 
 # class SocialAmenitiesTestCase(TestCase):
 #   pass
