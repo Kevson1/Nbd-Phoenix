@@ -9,6 +9,8 @@ class Neighbourhood(models.Model):
   def save_nbd(self):
     self.save()
     
+  def delete_nbd(self):
+    self.delete()
   
   def __str__(self):
     return self.neighbourhood_name

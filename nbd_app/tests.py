@@ -17,6 +17,13 @@ class NeighbourhoodTestCase(TestCase):
     neighbourhoods = Neighbourhood.objects.all()
     self.assertTrue(len(neighbourhoods)==1)
     
+  # Test_delete_neighbourhood
+  def test_delete_nbd(self):
+    self.nbd.save_nbd()
+    self.nbd.delete_nbd()
+    neighbourhoods = Neighbourhood.objects.all()
+    self.assertTrue(len(neighbourhoods)==0)
+    
 
 class ProfileTestCase(TestCase):
   pass
