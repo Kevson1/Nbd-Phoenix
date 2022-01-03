@@ -51,6 +51,13 @@ class ProfileTestCase(TestCase):
     saved_profiles = Profile.objects.all()
     self.assertTrue(len(saved_profiles)==1)
     
+  # Test delete profile method
+  def test_delete_profile(self):
+    self.profile.save_profile()
+    self.profile.delete_profile()
+    existing_profiles = Profile.objects.all()
+    self.assertTrue(len(existing_profiles)==0)
+    
 
 # class SocialAmenitiesTestCase(TestCase):
 #   pass
