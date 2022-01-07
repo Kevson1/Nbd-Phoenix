@@ -152,5 +152,43 @@ class BusinessTestCase(TestCase):
     businesses_found_for_nbd = Business.filter_by_neighbourhood('Makongeni')
     self.assertTrue(len(businesses_found_for_nbd)==1)
 
-# class GeneralPostsTestCase(TestCase):
-#   pass
+class GeneralPostsTestCase(TestCase):
+  # Set up method
+  def setUp(self):
+    # Create a Neighbourhood instance
+    self.nbd = Neighbourhood(neighbourhood_name='Makongeni',
+                             general_location='Kaloleni'
+                             )
+    
+    self.nbd.save_nbd()
+    
+    # Create a Business instance
+    self.news = GeneralPosts(topic = 'Infrastructure',
+                             title = 'Improvement of infrastructure in the neighbourhood',
+                             message = 'A renovation notice has been published',
+                             date_posted = '12-07-2021',
+                             neighbourhood = self.nbd
+                             )
+    self.news.save_news()
+    
+  # Test instance
+  def test_instance(self):
+    self.assertTrue(isinstance(self.news, GeneralPosts))
+    
+  # Test save business
+  def test_save_news(self):
+    self.news.save_news()
+    saved_news = GeneralPosts.objects.all()
+    self.assertTrue(len(saved_news)==1)
+    
+  # Test Delete Business
+  def test_delete_news(self):
+    self.news.save_news()
+    self.news.delete_news()
+    saved_news = GeneralPosts.objects.all()
+    self.assertTrue(len(saved_news)==0)
+    
+  # Filter businesses by neighbourhood
+  def test_filter_generalposts_by_neighbourhood(self):
+    generalposts_found_for_nbd = GeneralPosts.filter_by_neighbourhood('Makongeni')
+    self.assertTrue(len(generalposts_found_for_nbd)==1)

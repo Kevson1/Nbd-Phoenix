@@ -80,6 +80,17 @@ class GeneralPosts(models.Model):
   date_posted = models.DateTimeField(auto_now=True)
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
   
+  def save_news(self):
+    self.save()
+    
+  def delete_news(self):
+    self.delete()
+    
+  @classmethod
+  def filter_by_neighbourhood(cls, neighbourhood_search):
+    found_amenities = cls.objects.filter(neighbourhood__neighbourhood_name = neighbourhood_search)
+    return found_amenities
+  
   def __str__(self):
     return self.title
   
