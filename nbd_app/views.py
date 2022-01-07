@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-def home(request):
+def businesses(request):
+  
   return render(request, 'index.html')
