@@ -145,6 +145,12 @@ class BusinessTestCase(TestCase):
     self.business.delete_business()
     saved_businesses = Business.objects.all()
     self.assertTrue(len(saved_businesses)==0)
+    
+  # Filter businesses by neighbourhood
+  def test_filter_business_by_neighbourhood(self):
+    
+    businesses_found_for_nbd = Business.filter_by_neighbourhood('Makongeni')
+    self.assertTrue(len(businesses_found_for_nbd)==1)
 
 # class GeneralPostsTestCase(TestCase):
 #   pass
