@@ -65,6 +65,11 @@ class Business(models.Model):
   def delete_business(self):
     self.delete()
     
+  @classmethod 
+  def get_all_businesses(cls):
+    all_projects = cls.objects.all()
+    return all_projects
+    
   @classmethod
   def filter_by_neighbourhood(cls, neighbourhood_search):
     found_amenities = cls.objects.filter(neighbourhood__neighbourhood_name = neighbourhood_search)
