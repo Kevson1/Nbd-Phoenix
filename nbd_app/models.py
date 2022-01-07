@@ -55,9 +55,15 @@ class SocialAmenities(models.Model):
 class Business(models.Model):
   business_name = models.CharField(max_length=30)
   business_description = models.TextField()
-  business_contact_No = models.IntegerField()
+  business_contact_No = models.BigIntegerField()
   business_contact_email = models.EmailField()
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  
+  def save_business(self):
+    self.save()
+    
+  def delete_business(self):
+    self.delete()
   
   def __str__(self):
     return self.business_name

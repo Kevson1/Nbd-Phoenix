@@ -99,15 +99,52 @@ class SocialAmenitiesTestCase(TestCase):
     self.nbd.save_nbd()
     
     # Create a social Amenities instance
-    self.socialAmenity = SocialAmenities(department_name = 'health', hotline_number = '+254789654112', email_address = 'health@kenya.gmail.com', neighbourhood = self.nbd)
+    self.socialAmenity = SocialAmenities(department_name = 'health',
+                                         hotline_number = '+254789654112',
+                                         email_address = 'health@kenya.gmail.com',
+                                         neighbourhood = self.nbd
+                                         )
     self.socialAmenity.save_amenity()
     
     amenities_found_for_nbd = SocialAmenities.filter_by_neighbourhood('Huruma')
     self.assertTrue(len(amenities_found_for_nbd)==1)
     
     
-# class BusinessTestCase(TestCase):
-#   pass
+class BusinessTestCase(TestCase):
+  # Set up method
+  def setUp(self):
+    # Create a Neighbourhood instance
+    self.nbd = Neighbourhood(neighbourhood_name='Makongeni',
+                             general_location='Kaloleni'
+                             )
+    
+    self.nbd.save_nbd()
+    
+    # Create a Business instance
+    self.business = Business(business_name = 'Phoenix developers',
+                             business_description = 'This is a software development company',
+                             business_contact_No = '+254789123456',
+                             business_contact_email = 'phoenixdevelopers@gmail.com',
+                             neighbourhood = self.nbd
+                             )
+    self.business.save_business()
+    
+  # Test instance
+  def test_instance(self):
+    self.assertTrue(isinstance(self.business, Business))
+    
+  # Test save business
+  def test_save_business(self):
+    self.business.save_business()
+    saved_business = Business.objects.all()
+    self.assertTrue(len(saved_business)==1)
+    
+  # Test Delete Business
+  def test_delete_business(self):
+    self.business.save_business()
+    self.business.delete_business()
+    saved_businesses = Business.objects.all()
+    self.assertTrue(len(saved_businesses)==0)
 
 # class GeneralPostsTestCase(TestCase):
 #   pass
