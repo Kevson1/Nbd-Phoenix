@@ -5,7 +5,7 @@
 Built by: Nyambura Kelvin Njuguna
 
 # Description
-This Repository holds a web-rating application where the user can view posted projects, login to view the details of the projects, rate the projects, and post their projects for rating. The user can also create and view their profile.
+This Repository holds a Neighbourhood application where the user can view key and important information about their neighbourhood after logging into the application. The user can also post information that they may wish about their neighbourhood for others to see.
 
 
 ## User Story
