@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from nbd_app.models import Business
 
 # Create your views here.
+def home(request):
+  return render(request, 'home.html')
+
 @login_required(login_url='/accounts/login/')
 def businesses(request):
   businesses = Business.get_all_businesses()
