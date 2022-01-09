@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from nbd_app.forms import GeneralPostsForm, NeighbourhoodForm
+from nbd_app.forms import GeneralPostsForm, NeighbourhoodForm, ProfileForm
 
 
 from nbd_app.models import Business, Neighbourhood,SocialAmenities,GeneralPosts,Police_Department
@@ -37,6 +37,23 @@ def create_general_posts(request):
     form = GeneralPostsForm()
     
   return render(request,'generalposts.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def create_profile(request):
+  form = ProfileForm(request.POST, request.FILES)
+  if form.is_valid():
+    first_name = form.cleaned_data.get('first_name')
+    last_name = form.cleaned_data.get('last_name')
+    id_number = form.cleaned_data.get('id_number')
+    profile_pic = form.cleaned_data.get('profile_pic')
+    neighbourhood = form.cleaned_data.get('neighbourhood')
+    
+    form.save()
+    return redirect('home')
+  else:
+    form = ProfileForm()
+    
+  return render(request,'new_profile.html', {"form":form})
 
 @login_required(login_url='/accounts/login/')
 def create_neighbourhood(request):
