@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, GeneralPosts
+from .models import Neighbourhood, Profile, GeneralPosts
 
 class ProfileForm(forms.ModelForm):
   class Meta:
@@ -10,3 +10,9 @@ class GeneralPostsForm(forms.ModelForm):
   class Meta:
     model = GeneralPosts
     fields = ['topic', 'title', 'message', 'neighbourhood']
+
+class NeighbourhoodForm(forms.ModelForm):
+  class Meta:
+    model = Neighbourhood
+    fields = ['neighbourhood_name', 'general_location']
+    
