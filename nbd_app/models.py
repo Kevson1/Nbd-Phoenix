@@ -11,6 +11,11 @@ class Neighbourhood(models.Model):
     
   def delete_nbd(self):
     self.delete()
+    
+  @classmethod 
+  def get_all_neighbourhoods(cls):
+    all_projects = cls.objects.all()
+    return all_projects
   
   def __str__(self):
     return self.neighbourhood_name

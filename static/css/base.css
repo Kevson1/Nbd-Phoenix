@@ -12,3 +12,6 @@ h1{
 .neighbourhood>h2{
   color: white;
 }
+.selection{
+  background-color:rgb(145, 141, 141)
+}

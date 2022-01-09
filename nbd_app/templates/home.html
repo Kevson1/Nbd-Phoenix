@@ -18,8 +18,16 @@
       Donec placerat diam eu congue interdum. Cras vitae urna leo. Integer commodo purus sem, nec tempor velit auctor vitae. 
       Nunc fermentum nisi non mi lobortis finibus. Vestibulum eget neque vel velit semper condimentum sit amet at massa.
     </p>
-
   </div>
+
+  <div class="selection">
+    <h2 class="text-center">Registered Neighbourhoods</h2>
+    {% for neighbourhood in neighbourhoods %}
+      <a href=""></a>
+      <!-- <h3 class="btn btn-primary">{{neighbourhood.neighbourhood_name}}</h3> -->
+    {%endfor%}
+  </div>
+
 </div>
 
 {% endblock %}
