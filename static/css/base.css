@@ -1,5 +1,6 @@
 h1{
-  color: red;
+  color: white;
+  font-weight: bold;
 }
 .neighbourhood{
   /* background-image: url("/static/background/neighbourhood2.jpg"); */
@@ -14,4 +15,7 @@ h1{
 }
 .selection{
   background-color:rgb(145, 141, 141)
+}
+.body{
+  background-color: green;
 }

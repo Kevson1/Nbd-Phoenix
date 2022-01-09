@@ -23,7 +23,7 @@
   <div class="selection">
     <h2 class="text-center">Registered Neighbourhoods</h2>
     {% for neighbourhood in neighbourhoods %}
-      <a href=""></a>
+      <a href="{% url 'businesses' neighbourhood.neighbourhood_name %}" value="{{neighbourhood.neighbourhood_name}}">{{neighbourhood.neighbourhood_name}}</a>
       <!-- <h3 class="btn btn-primary">{{neighbourhood.neighbourhood_name}}</h3> -->
     {%endfor%}
   </div>

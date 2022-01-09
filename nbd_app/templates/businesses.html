@@ -2,16 +2,73 @@
 
 {% block content %}
 
-<div class="container">
-  <h1 class="text-center">All Businesses</h1>
-  <div class="card">
-    <!-- <div class="col-md-6">
+<div class="body container-fluid">
+  <div class="container">
+    <h1 class="text-center">Know Your Neighbourhood</h1>
 
-    </div> -->
-    <div class="text-center">
-      {% for business in businesses %}
+    <h3 class="text-center category">Social Amenities Near You</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3>Health Department</h3>
+          </div>
+
+          {% if health_info %}
+            {% for health_info in health_info %}
+              <div class="row card-body">
+                <div class="col-md-6">
+                  {{health_info.department_name}}
+                </div>
+                <div class="col-md-6">
+                  <small><p><b>Hotline Number: </b>{{health_info.hotline_number}}</p></small>
+                  <small><p><b>Email Address: </b>{{health_info.email_address}}</p></small>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <p><b><em style="color:brown">Services available 24/7</em></b></p>
+              </div>
+            {%endfor%}
+          {% else %}
+            <p class="text-center">Health department info for this neighbourhood is yet to be posted</p>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3>Security Department</h3>
+          </div>
+
+          {% if security_info %}
+            {% for security_info in security_info %}
+            <div class="row card-body">
+              <div class="col-md-6">
+                {{security_info.department_name}}
+              </div>
+              <div class="col-md-6">
+                <small><p><b>Hotline Number: </b>{{security_info.hotline_number}}</p></small>
+                <small><p><b>Email Address: </b>{{security_info.email_address}}</p></small>
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <p><b><em style="color:brown">Services available 24/7</em></b></p>
+            </div>
+            {%endfor%}
+          {%else%}
+            <p class="text-center">Security Department Info for this Neighbourhood is yet to be posted</p>
+          {% endif %}
+            
+        </div>
+      </div>
+    </div>
+
+    <h3 class="text-center category">Businesses Near You</h3>
+    {% for business in businesses %}
+      <div class="card mt-3 text-center">
         <div class="card-header">
-          <h3>{{business.business_name}} <span style="text-decoration:underline">({{business.neighbourhood}})</span> </h3>
+          <h3>{{business.business_name}} <span style="text-decoration:underline; color:brown">({{business.neighbourhood}})</span> </h3>
         </div>
         <div class="row">
           <div class="col-md-7">
@@ -26,10 +83,31 @@
             </div>
           </div>
         </div>
+      </div>
+    {%endfor%}
 
-      {%endfor%}
+    <h3 class="text-center category">General News in your Neighbourhood</h3>
+    {% for general_post in general_posts %}
+    <div class="card mt-3 text-center">
+      <div class="card-header">
+        <h3>{{general_post.title}}</h3>
+      </div>
+      <div class="card-body">
+        {{general_post.message}}
+      </div>
+      <div class="card-footer">
+        <p><b><em>Date posted: {{general_post.date_posted}}</em></b></p>
+      </div>
     </div>
+  {%endfor%}
+
   </div>
 </div>
 
 {% endblock %}
+
+<!-- topic = models.CharField(max_length=20)
+title = models.CharField(max_length=50)
+message = models.TextField()
+date_posted = models.DateTimeField(auto_now=True)
+neighbourhood  -->

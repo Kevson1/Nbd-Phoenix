@@ -57,6 +57,27 @@ class SocialAmenities(models.Model):
   def __str__(self):
     return self.department_name
   
+class Police_Department(models.Model):
+  department_name = models.CharField(max_length=30)
+  hotline_number = models.BigIntegerField()
+  email_address = models.EmailField()
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  
+  def save_department(self):
+    self.save()
+    
+  def delete_department(self):
+    self.delete()
+    
+  @classmethod
+  def filter_by_neighbourhood(cls, neighbourhood_search):
+    found_department = cls.objects.filter(neighbourhood__neighbourhood_name = neighbourhood_search)
+    return found_department
+  
+  
+  def __str__(self):
+    return self.department_name
+  
 class Business(models.Model):
   business_name = models.CharField(max_length=30)
   business_description = models.TextField()
@@ -85,7 +106,7 @@ class Business(models.Model):
   
 class GeneralPosts(models.Model):
   topic = models.CharField(max_length=20)
-  title = models.CharField(max_length=50)
+  title = models.CharField(max_length=100)
   message = models.TextField()
   date_posted = models.DateTimeField(auto_now=True)
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
