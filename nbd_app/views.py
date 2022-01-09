@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from nbd_app.forms import GeneralPostsForm, NeighbourhoodForm, ProfileForm
 
 
-from nbd_app.models import Business, Neighbourhood,SocialAmenities,GeneralPosts,Police_Department
+from nbd_app.models import Business, Neighbourhood, Profile,SocialAmenities,GeneralPosts,Police_Department
 
 # Create your views here.
 def home(request):
@@ -12,7 +12,10 @@ def home(request):
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-  return render(request, 'profile.html')
+  current_user=request.user.id
+  profile = Profile.objects.filter(user__id=current_user)
+  
+  return render(request, 'profile.html', {"profile":profile})
 
 @login_required(login_url='/accounts/login/')
 def businesses(request, neighbourhood_name):
@@ -47,9 +50,10 @@ def create_profile(request):
     id_number = form.cleaned_data.get('id_number')
     profile_pic = form.cleaned_data.get('profile_pic')
     neighbourhood = form.cleaned_data.get('neighbourhood')
+    form.instance.user = request.user
     
     form.save()
-    return redirect('home')
+    return redirect('profile')
   else:
     form = ProfileForm()
     

@@ -2,7 +2,35 @@
 
 {% block content %}
 
-<h2>Profile page Works</h2>
-<a class="btn btn-success" href="{% url 'create_profile' %}">Create profile</a>
+  <div class="container">
+
+    <div class="text-center">
+      {% if profile %}
+        {% for profile in profile%}
+          <div class="row">
+            <div class="col md-6 text-center">
+              <img class="rounded-circle" src="{{profile.profile_pic.url}}" alt="Profile Picture" srcset=""> <br>
+              <a class="btn btn-success mt-3" href="{% url 'create_profile' %}">Update profile</a>
+            </div>
+            <div class="col md-6 mx-auto">
+              <p><strong>Name: </strong>{{profile.first_name}} {{profile.last_name}}</p>
+              <p><strong>ID Number: </strong>{{profile.id_number}}</p>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>You have not yet created a profile. Please create one <a href="{% url 'create_profile' %}">here</a></p>
+      {% endif %}
+
+    </div>
+
+    
+  </div>
 
 {% endblock %}
+
+first_name = form.cleaned_data.get('first_name')
+    last_name = form.cleaned_data.get('last_name')
+    id_number = form.cleaned_data.get('id_number')
+    profile_pic = form.cleaned_data.get('profile_pic')
+    neighbourhood 

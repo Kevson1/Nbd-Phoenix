@@ -26,6 +26,7 @@ class Profile(models.Model):
   id_number = models.IntegerField()
   profile_pic = models.ImageField(upload_to='static/images/', null=True)
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
   
   def save_profile(self):
     self.save()
