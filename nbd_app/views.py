@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from nbd_app.forms import GeneralPostsForm
 
 
 from nbd_app.models import Business, Neighbourhood,SocialAmenities,GeneralPosts,Police_Department
@@ -22,9 +23,28 @@ def businesses(request, neighbourhood_name):
   return render(request, 'businesses.html', {"businesses":businesses, "health_info":health_info, "security_info":security_info, "general_posts":general_posts})
 
 @login_required(login_url='/accounts/login/')
-def general_posts(request):
-  return render(request,'generalposts.html')
+def create_general_posts(request):
+  form = GeneralPostsForm(request.POST, request.FILES)
+  if form.is_valid():
+    topic = form.cleaned_data.get('topic')
+    title = form.cleaned_data.get('title')
+    message = form.cleaned_data.get('message')
+    # form.instance.neighbourhood = request.neighbourhood
+    neighbourhood = form.cleaned_data.get('neighbourhood')
+    
+    form.save()
+    return redirect('home')
+  else:
+    form = GeneralPostsForm()
+    
+  return render(request,'generalposts.html', {"form":form})
 
 @login_required(login_url='/accounts/login/')
 def social_amenities(request):
   return render(request, 'socialamenities.html')
+
+  topic = models.CharField(max_length=20)
+  title = models.CharField(max_length=100)
+  message = models.TextField()
+  date_posted = models.DateTimeField(auto_now=True)
+  neighbourhood 
