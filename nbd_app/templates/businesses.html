@@ -87,27 +87,27 @@
     {%endfor%}
 
     <h3 class="text-center category">General News in your Neighbourhood</h3>
-    {% for general_post in general_posts %}
-    <div class="card mt-3 text-center">
-      <div class="card-header">
-        <h3>{{general_post.title}}</h3>
-      </div>
-      <div class="card-body">
-        {{general_post.message}}
-      </div>
-      <div class="card-footer">
-        <p><b><em>Date posted: {{general_post.date_posted}}</em></b></p>
-      </div>
+    <div class="card">
+      {% if general_posts %}
+        {% for general_post in general_posts %}
+          <div class="card mt-3 text-center">
+            <div class="card-header">
+              <h3>{{general_post.title}}</h3>
+            </div>
+            <div class="card-body">
+              {{general_post.message}}
+            </div>
+            <div class="card-footer">
+              <p><b><em>Date posted: {{general_post.date_posted}}</em></b></p>
+            </div>
+          </div>
+        {%endfor%}
+      {% else %}
+        <p>No General posts yet for this neighbourhood</p>
+      {% endif %}
     </div>
-  {%endfor%}
 
   </div>
 </div>
 
 {% endblock %}
-
-<!-- topic = models.CharField(max_length=20)
-title = models.CharField(max_length=50)
-message = models.TextField()
-date_posted = models.DateTimeField(auto_now=True)
-neighbourhood  -->
