@@ -6,7 +6,6 @@ h1{
   /* background-image: url("/static/background/neighbourhood2.jpg"); */
   background-color: rgb(77, 74, 74);
   background-size: contain;
-  /* background-repeat: no-repeat; */
   background-position: center;
   min-height: 350px;
 }
@@ -14,8 +13,14 @@ h1{
   color: white;
 }
 .selection{
-  background-color:rgb(145, 141, 141)
+  background-color:rgb(17 159 175);
 }
 .body{
-  background-color: green;
+
+  background-image: url("/static/background/neighbourhood2.jpg");
+  background-attachment: fixed;
+}
+.social, .business, .general{
+  background-color: rgb(17 159 175);
+  opacity:80%;
 }

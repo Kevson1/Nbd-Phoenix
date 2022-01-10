@@ -11,7 +11,16 @@
   <div class="text-center">
     <h2>About</h2>
     <p>
-      This Repository holds a Neighbourhood application where the user can view key and important information about their neighbourhood after logging into the application. The user can also post information that they may wish about their neighbourhood for others to see.
+      If you are like me, You really don’t know what is happening in your neighborhood most of the time.
+      What if an important meeting happens, theft or even death wouldn’t you like to know about it.
+    </p>
+    <p>
+      To keep you informed, this web application allows you to, Sign in with the application, 
+      Set up a profile, a general location and a neighborhood name, 
+      Find a list of different businesses in the neighborhood, 
+      Find Contact Information for the health department and Police authorities near the neighborhood, 
+      Create Posts that will be visible to everyone in the neighborhood, and
+      Change the neighborhood when you decide to move out.
     </p>
     <p><strong><em>Select Your Neighbourhood Below</em></strong></p>
   </div>
@@ -21,7 +30,6 @@
     <div class="text-center">
       {% for neighbourhood in neighbourhoods %}
       <a class="btn btn-primary" href="{% url 'businesses' neighbourhood.neighbourhood_name %}" value="{{neighbourhood.neighbourhood_name}}">{{neighbourhood.neighbourhood_name}}</a>
-      <!-- <h3 class="btn btn-primary">{{neighbourhood.neighbourhood_name}}</h3> -->
     {%endfor%}
     </div>
   </div>

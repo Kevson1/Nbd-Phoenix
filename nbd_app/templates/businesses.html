@@ -6,105 +6,119 @@
   <div class="container">
     <h1 class="text-center">Know Your Neighbourhood</h1>
 
-    <h3 class="text-center category">Social Amenities Near You</h3>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header text-center">
-            <h3>Health Department</h3>
+    <div class="social">
+      <h3 class="text-center category">Social Amenities Near You</h3>
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="card">
+            <div class="card-header text-center">
+              <h3>Health Department</h3>
+            </div>
+            {% if health_info %}
+              {% for health_info in health_info %}
+                <div class="row card-body">
+                  <div class="col-md-6">
+                    {{health_info.department_name}}
+                  </div>
+                  <div class="col-md-6">
+                    <small><p><b>Hotline Number: </b>{{health_info.hotline_number}}</p></small>
+                    <small><p><b>Email Address: </b>{{health_info.email_address}}</p></small>
+                  </div>
+                </div>
+                <div class="card-footer text-center">
+                  <p><b><em style="color:brown">Services available 24/7</em></b></p>
+                </div>
+              {%endfor%}
+            {% else %}
+              <p class="text-center">Health department info for this neighbourhood is yet to be posted</p>
+            {% endif %}
           </div>
 
-          {% if health_info %}
-            {% for health_info in health_info %}
-              <div class="row card-body">
-                <div class="col-md-6">
-                  {{health_info.department_name}}
-                </div>
-                <div class="col-md-6">
-                  <small><p><b>Hotline Number: </b>{{health_info.hotline_number}}</p></small>
-                  <small><p><b>Email Address: </b>{{health_info.email_address}}</p></small>
-                </div>
-              </div>
-              <div class="card-footer text-center">
-                <p><b><em style="color:brown">Services available 24/7</em></b></p>
-              </div>
-            {%endfor%}
-          {% else %}
-            <p class="text-center">Health department info for this neighbourhood is yet to be posted</p>
-          {% endif %}
-
+          <div class="text-center my-2">
+            <a href="#" class="btn btn-danger"><b><em>Add Health Department info</em></b></a>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header text-center">
-            <h3>Security Department</h3>
+
+        <div class="col-md-6">
+
+          <div class="card">
+            <div class="card-header text-center">
+              <h3>Security Department</h3>
+            </div>
+            {% if security_info %}
+              {% for security_info in security_info %}
+                <div class="row card-body">
+                  <div class="col-md-6">
+                    {{security_info.department_name}}
+                  </div>
+                  <div class="col-md-6">
+                    <small><p><b>Hotline Number: </b>{{security_info.hotline_number}}</p></small>
+                    <small><p><b>Email Address: </b>{{security_info.email_address}}</p></small>
+                  </div>
+                </div>
+                <div class="card-footer text-center">
+                  <p><b><em style="color:brown">Services available 24/7</em></b></p>
+                </div>
+              {%endfor%}
+              <a href="#" class="btn btn-alert">Add Security info</a>
+            {%else%}
+              <p class="text-center">Security Department Info for this Neighbourhood is yet to be posted</p>
+            {% endif %}
           </div>
 
-          {% if security_info %}
-            {% for security_info in security_info %}
-            <div class="row card-body">
-              <div class="col-md-6">
-                {{security_info.department_name}}
-              </div>
-              <div class="col-md-6">
-                <small><p><b>Hotline Number: </b>{{security_info.hotline_number}}</p></small>
-                <small><p><b>Email Address: </b>{{security_info.email_address}}</p></small>
-              </div>
-            </div>
-            <div class="card-footer text-center">
-              <p><b><em style="color:brown">Services available 24/7</em></b></p>
-            </div>
-            {%endfor%}
-          {%else%}
-            <p class="text-center">Security Department Info for this Neighbourhood is yet to be posted</p>
-          {% endif %}
-            
+          <div class="text-center my-2">
+            <a href="#" class="btn btn-danger"><b><em>Add Security info</em></b></a>
+          </div>
         </div>
       </div>
     </div>
 
-    <h3 class="text-center category">Businesses Near You</h3>
-    {% for business in businesses %}
-      <div class="card mt-3 text-center">
-        <div class="card-header">
-          <h3>{{business.business_name}} <span style="text-decoration:underline; color:brown">({{business.neighbourhood}})</span> </h3>
-        </div>
-        <div class="row">
-          <div class="col-md-7">
-            <div class="card-body">
-              <p>{{business.business_description}}</p>
+    <div class="business mt-3">
+      <h3 class="text-center category">Businesses Near You</h3>
+      {% for business in businesses %}
+        <div class="card mt-3 text-center">
+          <div class="card-header">
+            <h3>{{business.business_name}} <span style="text-decoration:underline; color:brown">({{business.neighbourhood}})</span> </h3>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <div class="card-body">
+                <p>{{business.business_description}}</p>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card-body">
+                <p><b>Business Contact: </b><em><small>{{business.business_contact_No}}</small></em></p>
+                <p><b>Business Email: </b><em><small>{{business.business_contact_email}}</small></em></p>
+              </div>
             </div>
           </div>
-          <div class="col-md-5">
-            <div class="card-body">
-              <p><b>Business Contact: </b><em><small>{{business.business_contact_No}}</small></em></p>
-              <p><b>Business Email: </b><em><small>{{business.business_contact_email}}</small></em></p>
-            </div>
-          </div>
         </div>
-      </div>
-    {%endfor%}
+      {%endfor%}
+    </div>
 
-    <h3 class="text-center category">General News in your Neighbourhood</h3>
-    <div class="card">
-      {% if general_posts %}
-        {% for general_post in general_posts %}
-          <div class="card mt-3 text-center">
-            <div class="card-header">
-              <h3>{{general_post.title}}</h3>
+    <div class="general mt-3">
+      <h3 class="text-center category">General News in your Neighbourhood</h3>
+      <div class="card">
+        {% if general_posts %}
+          {% for general_post in general_posts %}
+            <div class="card mt-3 text-center">
+              <div class="card-header">
+                <h3>{{general_post.title}}</h3>
+              </div>
+              <div class="card-body">
+                {{general_post.message}}
+              </div>
+              <div class="card-footer">
+                <p><b><em>Date posted: {{general_post.date_posted}}</em></b></p>
+              </div>
             </div>
-            <div class="card-body">
-              {{general_post.message}}
-            </div>
-            <div class="card-footer">
-              <p><b><em>Date posted: {{general_post.date_posted}}</em></b></p>
-            </div>
-          </div>
-        {%endfor%}
-      {% else %}
-        <p>No General posts yet for this neighbourhood</p>
-      {% endif %}
+          {%endfor%}
+        {% else %}
+          <p>No General posts yet for this neighbourhood</p>
+        {% endif %}
+      </div>
     </div>
 
   </div>
