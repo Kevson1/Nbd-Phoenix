@@ -21,10 +21,25 @@ The user can:
 
 # Design
 ### Home page
-<img src="static/images/ScreenshotHome.png" raw = true alt = "Website design">
+<img src="static/images/HomeScreen.png" raw = true alt = "Website design">
 
 ### Neighbourhood Information page
-<img src="static/images/nbdInfo.png" raw = true alt = "Website design">
+<img src="static/images/NeighbourhoodScreen.png" raw = true alt = "Website design">
+
+### New Neighbourhood Form
+<img src="static/images/NewNeighbourhoodForm.png" raw = true alt = "Website design">
+
+### New Business Form
+<img src="static/images/NewBusinessForm.png" raw = true alt = "Website design">
+
+### New Security Department Form
+<img src="static/images/SecurityDepartmentForm.png" raw = true alt = "Website design">
+
+### New Health Department Form
+<img src="static/images/HealthDepartmentForm.png" raw = true alt = "Website design">
+
+### General News Form
+<img src="static/images/GeneralNewsForm.png" raw = true alt = "Website design">
 
 
 # Prerequisites

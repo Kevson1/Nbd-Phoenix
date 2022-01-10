@@ -22,15 +22,16 @@
       Create Posts that will be visible to everyone in the neighborhood, and
       Change the neighborhood when you decide to move out.
     </p>
-    <p><strong><em>Select Your Neighbourhood Below</em></strong></p>
+    <!-- <p><strong><em class="note">Select Your Neighbourhood Below or <a href="{% url 'create_neighbourhood' %}">Create One Here</a></em></strong></p> -->
+    <p><strong><em class="note"><marquee behavior="alternate" direction="">Select Your Neighbourhood Below or <a href="{% url 'create_neighbourhood' %}">Create One Here</marquee></a></em></strong></p>
   </div>
 
   <div class="selection">
     <h2 class="text-center">Registered Neighbourhoods</h2>
     <div class="text-center">
       {% for neighbourhood in neighbourhoods %}
-      <a class="btn btn-primary" href="{% url 'businesses' neighbourhood.neighbourhood_name %}" value="{{neighbourhood.neighbourhood_name}}">{{neighbourhood.neighbourhood_name}}</a>
-    {%endfor%}
+        <a class="btn btn-light my-2 mx-2" href="{% url 'businesses' neighbourhood.neighbourhood_name %}" value="{{neighbourhood.neighbourhood_name}}">{{neighbourhood.neighbourhood_name}}</a>
+      {%endfor%}
     </div>
   </div>
 

@@ -24,3 +24,7 @@ h1{
   background-color: rgb(17 159 175);
   opacity:80%;
 }
+.note{
+  color: brown;
+  font-size: 40px;
+}
