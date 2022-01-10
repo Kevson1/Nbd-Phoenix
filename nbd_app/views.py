@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from nbd_app.forms import GeneralPostsForm, NeighbourhoodForm, ProfileForm
+from nbd_app.forms import BusinessForm, GeneralPostsForm, NeighbourhoodForm, PoliceDepForm, ProfileForm, SocialAmenitiesForm
 
 
 from nbd_app.models import Business, Neighbourhood, Profile,SocialAmenities,GeneralPosts,Police_Department
@@ -76,8 +76,49 @@ def create_neighbourhood(request):
 def social_amenities(request):
   return render(request, 'socialamenities.html')
 
-  topic = models.CharField(max_length=20)
-  title = models.CharField(max_length=100)
-  message = models.TextField()
-  date_posted = models.DateTimeField(auto_now=True)
-  neighbourhood 
+@login_required(login_url='/accounts/login/')
+def create_health_department(request):
+  form = SocialAmenitiesForm(request.POST, request.FILES)
+  if form.is_valid():
+    department_name = form.cleaned_data.get('department_name')
+    hotline_number = form.cleaned_data.get('hotline_number')
+    email_address = form.cleaned_data.get('email_address')
+    neighbourhood = form.cleaned_data.get('neighbourhood')
+    
+    form.save()
+    return redirect('home')
+  else:
+    form = SocialAmenitiesForm()
+    
+  return render(request,'new_healthdepartment.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def create_security_department(request):
+  form = PoliceDepForm(request.POST, request.FILES)
+  if form.is_valid():
+    department_name = form.cleaned_data.get('department_name')
+    hotline_number = form.cleaned_data.get('hotline_number')
+    email_address = form.cleaned_data.get('email_address')
+    neighbourhood = form.cleaned_data.get('neighbourhood')
+    
+    form.save()
+    return redirect('home')
+  else:
+    form = PoliceDepForm()
+  return render(request,'new_securitydepartment.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def create_business(request):
+  form = BusinessForm(request.POST, request.FILES)
+  if form.is_valid():
+    business_name = form.cleaned_data.get('business_name')
+    business_description = form.cleaned_data.get('business_description')
+    business_contact_No = form.cleaned_data.get('business_contact_No')
+    business_contact_email = form.cleaned_data.get('business_contact_email')
+    neighbourhood = form.cleaned_data.get('neighbourhood')
+    
+    form.save()
+    return redirect('home')
+  else:
+    form = BusinessForm()
+  return render(request,'new_business.html', {"form":form})

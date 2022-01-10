@@ -36,7 +36,7 @@
           </div>
 
           <div class="text-center my-2">
-            <a href="#" class="btn btn-danger"><b><em>Add Health Department info</em></b></a>
+            <a href="{% url 'create_health_department' %}" class="btn btn-danger"><b><em>Add Health Department info</em></b></a>
           </div>
         </div>
 
@@ -68,7 +68,7 @@
           </div>
 
           <div class="text-center my-2">
-            <a href="#" class="btn btn-danger"><b><em>Add Security info</em></b></a>
+            <a href="{% url 'create_security_department' %}" class="btn btn-danger"><b><em>Add Security info</em></b></a>
           </div>
         </div>
       </div>
@@ -96,6 +96,10 @@
           </div>
         </div>
       {%endfor%}
+
+      <div class="text-center my-2">
+        <a href="{% url 'create_business' %}" class="btn btn-danger"><b><em>Add Business info</em></b></a>
+      </div>
     </div>
 
     <div class="general mt-3">

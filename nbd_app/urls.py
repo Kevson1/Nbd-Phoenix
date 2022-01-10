@@ -9,5 +9,7 @@ urlpatterns = [
     url(r'^new/generalposts/$', views.create_general_posts, name='create_general_posts'),
     url(r'^new/neighbourhood/$', views.create_neighbourhood, name='create_neighbourhood'),
     url(r'^new/profile/$', views.create_profile, name='create_profile'),
-    
+    url(r'^new/health_department/$', views.create_health_department, name='create_health_department'),
+    url(r'^new/security_department/$', views.create_security_department, name='create_security_department'),
+    url(r'^new/business/$', views.create_business, name='create_business'),
 ]
